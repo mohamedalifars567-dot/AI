@@ -109,7 +109,62 @@
     <main class="flex-grow">
         <!-- Developer 2 Section Placeholder -->
         <section id="hero" class="py-12 text-center text-slate-400 border-b border-dashed border-slate-300 dark:border-slate-800">
-            [قسم الواجهة والبحث — للمطور الثاني]
+            <!-- ===== HERO · Task 1: Gradient heading, subtitle & CTAs ===== -->
+            <!-- Requires <html lang="ar" dir="rtl"> and Tailwind with darkMode: 'class' -->
+            <section id="hero" aria-labelledby="hero-heading" class="relative isolate overflow-hidden">
+                <!--pt-* clears a fixed navbar; reduce it if your navbar is in normal flow.
+                overflow-hidden + isolate keep the blurred glows added in Task 2 from causing horizontal scroll.-->
+                <div class="mx-auto max-w-7xl px-6 pb-16 pt-32 sm:pb-24 sm:pt-40 lg:px-8">
+
+                    <!-- Text block (Task 2's mockup will sit below it, inside this same container) -->
+                    <div class="mx-auto max-w-4xl text-center">
+
+                        <!-- Title: the inline span + box-decoration-clone repaints the full gradient on every wrapped line -->
+                        <h1 id="hero-heading" class="text-balance text-4xl font-extrabold leading-snug sm:text-5xl md:text-6xl lg:text-7xl">
+                            <span class="box-decoration-clone bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text py-1 text-transparent">اكتشف أقوى أدوات الذكاء الاصطناعي</span>
+                        </h1>
+
+                        <!-- Subtitle: max-w-xl keeps lines under ~75 characters -->
+                        <p class="mx-auto mt-6 max-w-xl text-pretty text-lg leading-8 text-slate-600 dark:text-slate-400 sm:mt-8 sm:text-xl sm:leading-9">
+                             دليلك الشامل لأفضل أدوات الذكاء الاصطناعي في التصميم والبرمجة وكتابة المحتوى وتحليل البيانات. قارن، جرّب، واختر الأداة المناسبة لعملك في دقائق.
+                        </p>
+
+                        <!-- CTAs: stacked full-width on mobile, side by side from sm -->
+                        <div class="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row">
+
+                         <!-- Primary CTA -->
+                            <a
+                                href="#tools"
+                                class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-8 py-3.5
+                                text-base font-bold text-white shadow-lg shadow-indigo-500/30
+                                transition-all duration-300
+                                hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/40 active:scale-95
+                                motion-reduce:transition-none motion-reduce:hover:scale-100
+                                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500"
+                            >
+                             استكشف الأدوات
+                            </a>
+
+                            <!-- Secondary CTA (glass) -->
+                            <a
+                                href="#demo"
+                                class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/60 px-8 py-3.5
+                                text-base font-semibold text-slate-800 shadow-sm backdrop-blur-md
+                                transition-all duration-300
+                                hover:border-slate-400 hover:bg-white/90
+                                dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-200
+                                dark:hover:border-slate-600 dark:hover:bg-slate-800/70
+                                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500"
+                            >
+                                <svg class="h-5 w-5 text-indigo-600 dark:text-indigo-400" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                             شاهد العرض
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>        
         </section>
 
         <!-- Developer 3 Section Placeholder -->
