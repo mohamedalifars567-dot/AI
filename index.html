@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus AI — منصة الأدوات والخدمات الذكية</title>
+    
+    <!-- خط Tajawal من Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CDN مكتبة Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- إعدادات Tailwind CSS والـ Dark Mode -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-300 min-h-screen flex flex-col justify-between">
+
+    <!-- 1. NAVBAR SECTION -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Brand Name -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-500/30">
+                        N
+                    </div>
+                    <span class="text-2xl font-extrabold bg-gradient-to-r from-brand-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                        Nexus AI
+                    </span>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 font-medium">
+                    <a href="#hero" class="hover:text-brand-500 transition-colors">الرئيسية</a>
+                    <a href="#search" class="hover:text-brand-500 transition-colors">البحث والفلاتر</a>
+                    <a href="#tools" class="hover:text-brand-500 transition-colors">معرض الأدوات</a>
+                    <a href="#pricing" class="hover:text-brand-500 transition-colors">الأسعار</a>
+                    <a href="#testimonials" class="hover:text-brand-500 transition-colors">آراء العملاء</a>
+                </nav>
+
+                <!-- Actions (Dark Mode Toggle & CTA) -->
+                <div class="hidden md:flex items-center gap-4">
+                    <!-- Dark/Light Mode Toggle Button -->
+                    <button id="theme-toggle" type="button" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:ring-2 hover:ring-brand-500 transition-all duration-300">
+                        <!-- Sun Icon (Light Mode) -->
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z"></path>
+                        </svg>
+                        <!-- Moon Icon (Dark Mode) -->
+                        <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </button>
+
+                    <a href="#tools" class="px-5 py-2.5 rounded-xl font-semibold bg-brand-600 hover:bg-brand-700 text-white shadow-lg shadow-brand-500/25 hover:scale-105 active:scale-95 transition-all">
+                        ابدأ الآن
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <button id="theme-toggle-mobile" type="button" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                        🌙
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-brand-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-6 space-y-3 font-medium">
+            <a href="#hero" class="block py-2 hover:text-brand-500">الرئيسية</a>
+            <a href="#search" class="block py-2 hover:text-brand-500">البحث والفلاتر</a>
+            <a href="#tools" class="block py-2 hover:text-brand-500">معرض الأدوات</a>
+            <a href="#pricing" class="block py-2 hover:text-brand-500">الأسعار</a>
+            <a href="#testimonials" class="block py-2 hover:text-brand-500">آراء العملاء</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT PLACEHOLDERS FOR DEVELOPER 2 & 3 -->
+    <main class="flex-grow">
+        <!-- Developer 2 Section Placeholder -->
+        <section id="hero" class="py-12 text-center text-slate-400 border-b border-dashed border-slate-300 dark:border-slate-800">
+            [قسم الواجهة والبحث — للمطور الثاني]
+        </section>
+
+        <!-- Developer 3 Section Placeholder -->
+        <section id="tools" class="py-12 text-center text-slate-400 border-b border-dashed border-slate-300 dark:border-slate-800">
+            [قسم المعرض والأسعار والآراء — للمطور الثالث]
+        </section>
+    </main>
+
+    <!-- 2. FOOTER SECTION -->
+    <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white font-bold">
+                            N
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-brand-600 to-pink-500 bg-clip-text text-transparent">
+                            Nexus AI
+                        </span>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        دليلك الموثوق والذكية لاكتشاف أفضل أدوات الذكاء الاصطناعي وتقنيات المستقبل لزيادة إنتاجيتك وتطوير مشاريعك.
+                    </p>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-base font-bold text-slate-900 dark:text-white mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="#hero" class="hover:text-brand-500 transition-colors">الرئيسية</a></li>
+                        <li><a href="#tools" class="hover:text-brand-500 transition-colors">أحدث الأدوات</a></li>
+                        <li><a href="#pricing" class="hover:text-brand-500 transition-colors">خطط الاشتراك</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Legal / Tech -->
+                <div>
+                    <h4 class="text-base font-bold text-slate-900 dark:text-white mb-4">التقنيات المستخدمة</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-500 dark:text-slate-400">
+                        <li>Tailwind CSS v3</li>
+                        <li>HTML5 & ES6 JavaScript</li>
+                        <li>Git & GitHub Collaboration</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Social / Contact -->
+                <div>
+                    <h4 class="text-base font-bold text-slate-900 dark:text-white mb-4">تابعنا</h4>
+                    <div class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+                        <a href="#" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:text-brand-500 hover:scale-110 transition-all">GitHub</a>
+                        <a href="#" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:text-brand-500 hover:scale-110 transition-all">Twitter</a>
+                        <a href="#" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:text-brand-500 hover:scale-110 transition-all">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Bar -->
+            <div class="pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400">
+                جميع الحقوق محفوظة © 2026 — تم التطوير بواسطة فريق <span class="font-semibold text-brand-500">Nexus AI</span>.
+            </div>
+        </div>
+    </footer>
+
+    <!-- 3. JAVASCRIPT FOR DARK MODE & MOBILE MENU TOGGLE -->
+    <script>
+        // Dark / Light Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check theme on initial load
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+            themeToggleDarkIcon.classList.add('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+            themeToggleLightIcon.classList.add('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
