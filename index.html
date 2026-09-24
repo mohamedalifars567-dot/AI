@@ -19,20 +19,31 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Tajawal', 'sans-serif'],
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-14px)' },
+                        },
+                    },
+                    animation: {
+                        float: 'float 6s ease-in-out infinite',
                     },
                     colors: {
                         brand: {
-                            50: '#eef2ff',
-                            100: '#e0e7ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                        }
-                    }
-                }
-            }
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        },
+                    },
+                },
+            },
         }
     </script>
 </head>
@@ -166,6 +177,87 @@
                 </div>
             </section>        
         </section>
+            <section id="hero" …>
+                <div class="mx-auto max-w-7xl …">
+
+                    <!-- ===== HERO · Task 2: Floating glass dashboard mockup + ambient glow ===== -->
+                    <!-- Requires the `float` animation in your Tailwind config (see commit notes). -->
+                    <!-- Decorative sample UI: aria-hidden keeps screen readers out of the fake data. -->
+                    <div
+                        aria-hidden="true"
+                        class="group relative mx-auto mb-10 mt-16 max-w-5xl animate-float sm:mb-16 sm:mt-20 motion-reduce:animate-none"
+                    >
+                        <!-- Ambient back-glow: lives inside the floating wrapper, so it moves with the card -->
+                        <div
+                            class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+                            opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-40"
+                        ></div>
+
+                        <!-- Glass card -->
+                        <div
+                            class="relative overflow-hidden rounded-3xl border border-white/20 bg-white/60 shadow-2xl shadow-indigo-500/10
+                            backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/60"
+                        >
+                            <!-- Window bar (dir="ltr" keeps the dots on the left and the URL readable) -->
+                            <div dir="ltr" class="flex items-center gap-2 border-b border-slate-900/5 px-5 py-3.5 dark:border-white/5">
+                                <span class="h-3 w-3 rounded-full bg-rose-400"></span>
+                                <span class="h-3 w-3 rounded-full bg-amber-400"></span>
+                                <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
+                                <span class="mx-auto rounded-md bg-slate-900/5 px-6 py-1 text-xs text-slate-500 dark:bg-white/5 dark:text-slate-400">nexus.ai/dashboard</span>
+                            </div>
+
+                            <!-- Body: chart + top tools (sample content, stacks on mobile) -->
+                            <div class="grid gap-8 p-5 sm:p-8 md:grid-cols-5">
+
+                                <!-- Weekly usage chart (pure CSS bars) -->
+                                <div class="md:col-span-3">
+                                    <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">استخدام هذا الأسبوع</p>
+                                    <div class="mt-5 flex h-48 items-end gap-2 sm:gap-3">
+                                        <span class="h-[35%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                        <span class="h-[55%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                        <span class="h-[45%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                        <span class="h-[75%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                        <span class="h-[60%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                        <span class="h-full flex-1 rounded-t-lg bg-gradient-to-t from-purple-500 to-pink-400"></span>
+                                        <span class="h-[70%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Top-rated tools -->
+                                <div class="md:col-span-2">
+                                    <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">الأدوات الأعلى تقييمًا</p>
+                                    <ul class="mt-5 space-y-3">
+                                        <li class="flex items-center gap-3 rounded-xl bg-white/50 p-3 transition-colors hover:bg-white/80 dark:bg-slate-800/50 dark:hover:bg-slate-800/80">
+                                            <span class="h-10 w-10 shrink-0 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500"></span>
+                                            <div class="min-w-0 flex-1">
+                                            <p class="truncate text-sm font-semibold text-slate-900 dark:text-white">مساعد الكتابة الذكي</p>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400">كتابة محتوى</p>
+                                            </div>
+                                            <span dir="ltr" class="rounded-full bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-300">★ 4.9</span>
+                                        </li>
+                                        <li class="flex items-center gap-3 rounded-xl bg-white/50 p-3 transition-colors hover:bg-white/80 dark:bg-slate-800/50 dark:hover:bg-slate-800/80">
+                                            <span class="h-10 w-10 shrink-0 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500"></span>
+                                            <div class="min-w-0 flex-1">
+                                                <p class="truncate text-sm font-semibold text-slate-900 dark:text-white">مولّد الصور</p>
+                                                <p class="text-xs text-slate-500 dark:text-slate-400">تصميم</p>
+                                            </div>
+                                            <span dir="ltr" class="rounded-full bg-pink-500/10 px-2 py-0.5 text-xs font-semibold text-pink-600 dark:text-pink-300">★ 4.8</span>
+                                        </li>
+                                        <li class="flex items-center gap-3 rounded-xl bg-white/50 p-3 transition-colors hover:bg-white/80 dark:bg-slate-800/50 dark:hover:bg-slate-800/80">
+                                            <span class="h-10 w-10 shrink-0 rounded-lg bg-gradient-to-br from-sky-500 to-indigo-500"></span>
+                                            <div class="min-w-0 flex-1">
+                                                <p class="truncate text-sm font-semibold text-slate-900 dark:text-white">مساعد البرمجة</p>
+                                                <p class="text-xs text-slate-500 dark:text-slate-400">برمجة</p>
+                                            </div>
+                                            <span dir="ltr" class="rounded-full bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-300">★ 4.8</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+            </section>
 
         <!-- Developer 3 Section Placeholder -->
         <section id="tools" class="py-12 text-center text-slate-400 border-b border-dashed border-slate-300 dark:border-slate-800">
