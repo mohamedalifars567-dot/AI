@@ -109,7 +109,7 @@
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-6 space-y-3 font-medium">
             <a href="#hero" class="block py-2 hover:text-brand-500">الرئيسية</a>
-            <a href="#search" class="block py-2 hover:text-brand-500">البحث والفلاتر</a>
+            <a href="#toool-search" class="block py-2 hover:text-brand-500">البحث والفلاتر</a>
             <a href="#tools" class="block py-2 hover:text-brand-500">معرض الأدوات</a>
             <a href="#pricing" class="block py-2 hover:text-brand-500">الأسعار</a>
             <a href="#testimonials" class="block py-2 hover:text-brand-500">آراء العملاء</a>
@@ -259,6 +259,77 @@
                 </div>
             </section>
 
+            <main>
+                <!-- ===== SEARCH · Task 3: Central search bar ===== -->
+                <!-- Sits right after the hero section. -mt-* pulls it up into the hero's bottom padding. -->
+                <section id="search" class="relative z-10 -mt-8 px-6 pb-8 sm:-mt-12 lg:px-8">
+
+                    <div role="search" class="group relative mx-auto max-w-3xl">
+                        <label for="tool-search" class="sr-only">ابحث في أدوات الذكاء الاصطناعي</label>
+                        <!-- Magnifier icon (start side): turns indigo while the input is focused -->
+                        <div
+                            class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5 text-slate-500
+                            transition-colors group-focus-within:text-indigo-500
+                            dark:text-slate-400 dark:group-focus-within:text-indigo-400"
+                        >
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="11" cy="11" r="7" />
+                                <path d="m20 20-3.5-3.5" />
+                            </svg>
+                        </div>
+
+                        <input
+                            id="tool-search"
+                            type="search"
+                            name="q"
+                            autocomplete="off"
+                            enterkeyhint="search"
+                            aria-keyshortcuts="Control+K Meta+K"
+                            placeholder="ابحث عن أداة ذكاء اصطناعي..."
+                            class="peer w-full rounded-2xl border border-slate-300 bg-white/70 py-4 ps-14 pe-4 text-base text-slate-900
+                            shadow-lg shadow-slate-900/5 backdrop-blur-xl transition-all duration-300
+                            placeholder:text-slate-500 hover:border-slate-400
+                            focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:shadow-indigo-500/20
+                            sm:pe-28
+                            dark:border-slate-700 dark:bg-slate-900/60 dark:text-white dark:placeholder:text-slate-400
+                            dark:hover:border-slate-600 dark:focus:border-transparent"
+                        />
+
+                        <!-- Shortcut badge (end side): hidden on small screens, fades out while the input is focused -->
+                        <kbd
+                            id="search-shortcut"
+                            dir="rtl"
+                            aria-hidden="true"
+                          class="pointer-events-none absolute inset-y-0 end-4 my-auto hidden h-7 items-center rounded-md border border-slate-300
+                            bg-slate-100/80 px-2 font-sans text-xs font-medium text-slate-600 transition-opacity
+                            peer-focus:opacity-0 sm:flex
+                            dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-400"
+                        >Ctrl + K</kbd>
+                    </div>
+
+                    <!-- Ctrl/Cmd + K focuses the input. Uses e.code so it also works on the Arabic keyboard layout. -->
+                    <script>
+                        (() => {
+                            const input = document.getElementById('tool-search');
+                            const badge = document.getElementById('search-shortcut');
+                            if (!input) return;
+                            const isApple = /Mac|iPhone|iPad/i.test(navigator.userAgentData?.platform || navigator.platform);
+                            if (isApple && badge) badge.textContent = '⌘ K';
+                            document.addEventListener('keydown', (e) => {
+                                if ((e.ctrlKey || e.metaKey) && e.code === 'KeyK') {
+                                    e.preventDefault();
+                                    input.focus();
+                                    input.select();
+                                }
+                            });
+                        })();
+                    </script>
+                </section>
+                
+                <section id="search"> … </section>
+
+                <!-- tools grid etc. -->
+            </main>
         <!-- Developer 3 Section Placeholder -->
         <section id="tools" class="py-12 text-center text-slate-400 border-b border-dashed border-slate-300 dark:border-slate-800">
             [قسم المعرض والأسعار والآراء — للمطور الثالث]
