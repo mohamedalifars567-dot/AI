@@ -330,11 +330,110 @@
 
                 <!-- tools grid etc. -->
             </main>
-        <!-- Developer 3 Section Placeholder -->
+        <section id="search" …>
+        <!-- ===== FILTERS · Task 4: Category chips ===== -->
+        <!-- Goes inside <section id="search">, right after the role="search" div (before the Task 3 <script>). -->
+            <div class="mx-auto mt-3 max-w-3xl">
+
+                <!--Mobile: one swipeable row that bleeds to the screen edges (-mx-6 cancels the section's px-6).
+                sm+: wraps and centers. No justify-center on mobile: it makes overflowing chips unreachable.
+                Active state is driven by aria-pressed, so the script only flips one attribute. -->
+                <div
+                    id="category-filters"
+                    role="group"
+                    aria-label="تصفية الأدوات حسب الفئة"
+                    class="-mx-6 flex gap-2 overflow-x-auto px-6 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
+                    sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0"
+                >
+                    <button
+                        type="button" data-category="all" aria-pressed="true"
+                        class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold backdrop-blur-md
+                        transition-all duration-200 hover:-translate-y-0.5 active:scale-95
+                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+                        border-slate-300 bg-white/60 text-slate-700 hover:border-indigo-400 hover:bg-white
+                        dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800
+                        aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:bg-origin-border aria-pressed:from-indigo-600 aria-pressed:to-purple-600
+                        aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-indigo-500/30 aria-pressed:hover:border-transparent
+                        dark:aria-pressed:border-transparent dark:aria-pressed:text-white"
+                    >الكل</button>
+
+                    <button
+                        type="button" data-category="design" aria-pressed="false"
+                        class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold backdrop-blur-md
+                       transition-all duration-200 hover:-translate-y-0.5 active:scale-95
+                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+                       border-slate-300 bg-white/60 text-slate-700 hover:border-indigo-400 hover:bg-white
+                       dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800
+                       aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:bg-origin-border aria-pressed:from-indigo-600 aria-pressed:to-purple-600
+                       aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-indigo-500/30 aria-pressed:hover:border-transparent
+                       dark:aria-pressed:border-transparent dark:aria-pressed:text-white"
+                    >تصميم</button>
+
+                    <button
+                        type="button" data-category="code" aria-pressed="false"
+                        class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold backdrop-blur-md
+                        transition-all duration-200 hover:-translate-y-0.5 active:scale-95
+                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+                        border-slate-300 bg-white/60 text-slate-700 hover:border-indigo-400 hover:bg-white
+                        dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800
+                        aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:bg-origin-border aria-pressed:from-indigo-600 aria-pressed:to-purple-600
+                        aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-indigo-500/30 aria-pressed:hover:border-transparent
+                        dark:aria-pressed:border-transparent dark:aria-pressed:text-white"
+                    >برمجة</button>
+
+                    <button
+                        type="button" data-category="writing" aria-pressed="false"
+                        class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold backdrop-blur-md
+                        transition-all duration-200 hover:-translate-y-0.5 active:scale-95
+                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+                        border-slate-300 bg-white/60 text-slate-700 hover:border-indigo-400 hover:bg-white
+                        dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800
+                        aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:bg-origin-border aria-pressed:from-indigo-600 aria-pressed:to-purple-600
+                        aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-indigo-500/30 aria-pressed:hover:border-transparent
+                        dark:aria-pressed:border-transparent dark:aria-pressed:text-white"
+                    >كتابة محتوى</button>
+
+                    <button
+                        type="button" data-category="data" aria-pressed="false"
+                        class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold backdrop-blur-md
+                        transition-all duration-200 hover:-translate-y-0.5 active:scale-95
+                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+                        border-slate-300 bg-white/60 text-slate-700 hover:border-indigo-400 hover:bg-white
+                        dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800
+                        aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:bg-origin-border aria-pressed:from-indigo-600 aria-pressed:to-purple-600
+                        aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-indigo-500/30 aria-pressed:hover:border-transparent
+                        dark:aria-pressed:border-transparent dark:aria-pressed:text-white"
+                    >تحليل بيانات</button>
+                </div>
+
+              <!-- Single-select toggle. Emits `categorychange` so the tools grid can filter without touching this code. -->
+                <script>
+                    (() => {
+                        const group = document.getElementById('category-filters');
+                        if (!group) return;
+
+                     group.addEventListener('click', (e) => {
+                         const chip = e.target.closest('button[data-category]');
+                         if (!chip) return;
+
+                         group.querySelectorAll('button[data-category]').forEach((b) =>
+                               b.setAttribute('aria-pressed', String(b === chip))
+                            );
+                         chip.scrollIntoView({ inline: 'center', block: 'nearest' });
+
+                            group.dispatchEvent(
+                               new CustomEvent('categorychange', { detail: { category: chip.dataset.category }, bubbles: true })
+                           );
+                       });
+                   })();
+                </script>
+            </div>
+        </section>
+    </main>
+     <!-- Developer 3 Section Placeholder -->
         <section id="tools" class="py-12 text-center text-slate-400 border-b border-dashed border-slate-300 dark:border-slate-800">
             [قسم المعرض والأسعار والآراء — للمطور الثالث]
         </section>
-    </main>
 
     <!-- 2. FOOTER SECTION -->
     <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8 transition-colors duration-300">
