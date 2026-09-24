@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark scroll-smooth">
+<html lang="ar" dir="rtl" class="dark scroll-smooth" scroll-pt-24>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,8 +67,8 @@
                 <!-- Desktop Navigation Links -->
                 <nav class="hidden md:flex items-center gap-8 font-medium">
                     <a href="#hero" class="hover:text-brand-500 transition-colors">الرئيسية</a>
-                    <a href="#search" class="hover:text-brand-500 transition-colors">البحث والفلاتر</a>
-                    <a href="#tools" class="hover:text-brand-500 transition-colors">معرض الأدوات</a>
+                    <a href="#tool-search" class="hover:text-brand-500 transition-colors">البحث والفلاتر</a>
+                    <a href="#category-filters" class="hover:text-brand-500 transition-colors">معرض الأدوات</a>
                     <a href="#pricing" class="hover:text-brand-500 transition-colors">الأسعار</a>
                     <a href="#testimonials" class="hover:text-brand-500 transition-colors">آراء العملاء</a>
                 </nav>
@@ -87,7 +87,7 @@
                         </svg>
                     </button>
 
-                    <a href="#tools" class="px-5 py-2.5 rounded-xl font-semibold bg-brand-600 hover:bg-brand-700 text-white shadow-lg shadow-brand-500/25 hover:scale-105 active:scale-95 transition-all">
+                    <a href="#category-filters" class="px-5 py-2.5 rounded-xl font-semibold bg-brand-600 hover:bg-brand-700 text-white shadow-lg shadow-brand-500/25 hover:scale-105 active:scale-95 transition-all">
                         ابدأ الآن
                     </a>
                 </div>
@@ -109,8 +109,8 @@
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-6 space-y-3 font-medium">
             <a href="#hero" class="block py-2 hover:text-brand-500">الرئيسية</a>
-            <a href="#toool-search" class="block py-2 hover:text-brand-500">البحث والفلاتر</a>
-            <a href="#tools" class="block py-2 hover:text-brand-500">معرض الأدوات</a>
+            <a href="#tool-search" class="block py-2 hover:text-brand-500">البحث والفلاتر</a>
+            <a href="#category-filters" class="block py-2 hover:text-brand-500">معرض الأدوات</a>
             <a href="#pricing" class="block py-2 hover:text-brand-500">الأسعار</a>
             <a href="#testimonials" class="block py-2 hover:text-brand-500">آراء العملاء</a>
         </div>
@@ -145,7 +145,7 @@
 
                          <!-- Primary CTA -->
                             <a
-                                href="#tools"
+                                href="#category-filters"
                                 class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-8 py-3.5
                                 text-base font-bold text-white shadow-lg shadow-indigo-500/30
                                 transition-all duration-300
@@ -158,7 +158,7 @@
 
                             <!-- Secondary CTA (glass) -->
                             <a
-                                href="#demo"
+                                href="#dashbord"
                                 class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/60 px-8 py-3.5
                                 text-base font-semibold text-slate-800 shadow-sm backdrop-blur-md
                                 transition-all duration-300
@@ -177,7 +177,7 @@
                 </div>
             </section>        
         </section>
-            <section id="hero" …>
+            <section id="dashbord" class="relative isolate overflow-hidden">
                 <div class="mx-auto max-w-7xl …">
 
                     <!-- ===== HERO · Task 2: Floating glass dashboard mockup + ambient glow ===== -->
@@ -262,9 +262,8 @@
             <main>
                 <!-- ===== SEARCH · Task 3: Central search bar ===== -->
                 <!-- Sits right after the hero section. -mt-* pulls it up into the hero's bottom padding. -->
-                <section id="search" class="relative z-10 -mt-8 px-6 pb-8 sm:-mt-12 lg:px-8">
-
-                    <div role="search" class="group relative mx-auto max-w-3xl">
+                <section id="search-section" class="relative z-10 -mt-8 px-6 pb-8 sm:-mt-12 lg:px-8 scroll-mt-32">
+                    <div role="search" class="group relative mx-auto max-w-3xl" >
                         <label for="tool-search" class="sr-only">ابحث في أدوات الذكاء الاصطناعي</label>
                         <!-- Magnifier icon (start side): turns indigo while the input is focused -->
                         <div
@@ -292,7 +291,7 @@
                             focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:shadow-indigo-500/20
                             sm:pe-28
                             dark:border-slate-700 dark:bg-slate-900/60 dark:text-white dark:placeholder:text-slate-400
-                            dark:hover:border-slate-600 dark:focus:border-transparent"
+                            dark:hover:border-slate-600 dark:focus:border-transparent scroll-mt-40"
                         />
 
                         <!-- Shortcut badge (end side): hidden on small screens, fades out while the input is focused -->
@@ -324,15 +323,11 @@
                             });
                         })();
                     </script>
-                </section>
-                
-                <section id="search"> … </section>
-
-                <!-- tools grid etc. -->
+                </section>                
             </main>
-        <section id="search" …>
-        <!-- ===== FILTERS · Task 4: Category chips ===== -->
-        <!-- Goes inside <section id="search">, right after the role="search" div (before the Task 3 <script>). -->
+        <section id="category-filters" class="py-12 text-center text-slate-400 border-b border-dashed border-slate-300 dark:border-slate-800">
+            <!-- ===== FILTERS · Task 4: Category chips ===== -->
+            <!-- Goes inside <section id="search">, right after the role="search" div (before the Task 3 <script>). -->
             <div class="mx-auto mt-3 max-w-3xl">
 
                 <!--Mobile: one swipeable row that bleeds to the screen edges (-mx-6 cancels the section's px-6).
@@ -460,7 +455,7 @@
                     <h4 class="text-base font-bold text-slate-900 dark:text-white mb-4">روابط سريعة</h4>
                     <ul class="space-y-2.5 text-sm text-slate-500 dark:text-slate-400">
                         <li><a href="#hero" class="hover:text-brand-500 transition-colors">الرئيسية</a></li>
-                        <li><a href="#tools" class="hover:text-brand-500 transition-colors">أحدث الأدوات</a></li>
+                        <li><a href="#category-filters" class="hover:text-brand-500 transition-colors">أحدث الأدوات</a></li>
                         <li><a href="#pricing" class="hover:text-brand-500 transition-colors">خطط الاشتراك</a></li>
                     </ul>
                 </div>
