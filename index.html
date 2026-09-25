@@ -325,8 +325,8 @@
                     </script>
                 </section>                
             </main>
-        <section id="category-filters" class="py-12 text-center text-slate-400 border-b border-dashed border-slate-300 dark:border-slate-800">
-            <!-- ===== FILTERS · Task 4: Category chips ===== -->
+        <section id="filters-section" class="py-8 text-center border-b border-slate-200/70 dark:border-slate-800">
+            <!-- ===== FILTERS · Developer 3: Category chips ===== -->
             <!-- Goes inside <section id="search">, right after the role="search" div (before the Task 3 <script>). -->
             <div class="mx-auto mt-3 max-w-3xl">
 
@@ -425,10 +425,51 @@
             </div>
         </section>
     </main>
-     <!-- Developer 3 Section Placeholder -->
-        <section id="tools" class="py-12 text-center text-slate-400 border-b border-dashed border-slate-300 dark:border-slate-800">
-            [قسم المعرض والأسعار والآراء — للمطور الثالث]
+     <!-- ===== TOOLS GRID · Developer 3 ===== -->
+        <section id="tools" class="relative overflow-hidden py-20 sm:py-24">
+            <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-indigo-500/5 to-transparent dark:from-indigo-400/10"></div>
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center">
+                    <span class="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-sm font-bold text-indigo-700 dark:border-indigo-400/20 dark:bg-indigo-400/10 dark:text-indigo-300">اكتشف الإمكانات</span>
+                    <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">أدوات ذكية لكل فكرة</h2>
+                    <p class="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-400">مجموعة منتقاة من الأدوات التي تساعدك على إنجاز أعمالك بذكاء وسرعة.</p>
+                </div>
+                <div id="tools-grid" class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" aria-live="polite">
+                    <article class="tool-card group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-indigo-300 hover:shadow-2xl hover:shadow-indigo-500/10 dark:border-slate-700 dark:bg-slate-800/70 dark:hover:border-indigo-500" data-category="writing" data-search="مساعد الكتابة الذكي كتابة محتوى نصوص copywriter"><div class="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-r from-indigo-500 to-pink-500 opacity-0 blur-lg transition duration-500 group-hover:opacity-30"></div><div class="flex items-start justify-between gap-4"><div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-2xl text-white shadow-lg shadow-indigo-500/25">✦</div><span class="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-bold text-indigo-600 dark:text-indigo-300">كتابة محتوى</span></div><h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">مساعد الكتابة الذكي</h3><p class="mt-3 flex-1 leading-7 text-slate-600 dark:text-slate-400">أنشئ نصوصًا احترافية وأفكارًا إبداعية تحافظ على نبرة علامتك التجارية.</p><div class="mt-6 flex items-center justify-between"><span dir="ltr" class="text-sm font-bold text-amber-500">★★★★★ <span class="text-slate-500 dark:text-slate-400">4.9</span></span><a href="#" class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-bold text-white transition hover:scale-105 hover:bg-indigo-700">جرّب الآن</a></div></article>
+                    <article class="tool-card group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-indigo-300 hover:shadow-2xl hover:shadow-indigo-500/10 dark:border-slate-700 dark:bg-slate-800/70 dark:hover:border-indigo-500" data-category="design" data-search="مولد الصور تصميم صور art image generator"><div class="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 blur-lg transition duration-500 group-hover:opacity-30"></div><div class="flex items-start justify-between gap-4"><div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 text-2xl text-white shadow-lg shadow-pink-500/25">◈</div><span class="rounded-full bg-pink-500/10 px-3 py-1 text-xs font-bold text-pink-600 dark:text-pink-300">تصميم</span></div><h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">مولّد الصور الإبداعي</h3><p class="mt-3 flex-1 leading-7 text-slate-600 dark:text-slate-400">حوّل وصفك إلى صور مذهلة تناسب الحملات التسويقية والمشاريع الرقمية.</p><div class="mt-6 flex items-center justify-between"><span dir="ltr" class="text-sm font-bold text-amber-500">★★★★★ <span class="text-slate-500 dark:text-slate-400">4.8</span></span><a href="#" class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-bold text-white transition hover:scale-105 hover:bg-indigo-700">جرّب الآن</a></div></article>
+                    <article class="tool-card group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-indigo-300 hover:shadow-2xl hover:shadow-indigo-500/10 dark:border-slate-700 dark:bg-slate-800/70 dark:hover:border-indigo-500" data-category="code" data-search="مساعد البرمجة برمجة كود developer coding code assistant"><div class="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 opacity-0 blur-lg transition duration-500 group-hover:opacity-30"></div><div class="flex items-start justify-between gap-4"><div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 text-2xl text-white shadow-lg shadow-sky-500/25">&lt;/&gt;</div><span class="rounded-full bg-sky-500/10 px-3 py-1 text-xs font-bold text-sky-600 dark:text-sky-300">برمجة</span></div><h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">مساعد البرمجة</h3><p class="mt-3 flex-1 leading-7 text-slate-600 dark:text-slate-400">اكتب كودًا أفضل، اكتشف الأخطاء، وتعلّم تقنيات جديدة بمساعدة ذكية.</p><div class="mt-6 flex items-center justify-between"><span dir="ltr" class="text-sm font-bold text-amber-500">★★★★★ <span class="text-slate-500 dark:text-slate-400">4.8</span></span><a href="#" class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-bold text-white transition hover:scale-105 hover:bg-indigo-700">جرّب الآن</a></div></article>
+                    <article class="tool-card group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-indigo-300 hover:shadow-2xl hover:shadow-indigo-500/10 dark:border-slate-700 dark:bg-slate-800/70 dark:hover:border-indigo-500" data-category="data" data-search="محلل البيانات تحليل بيانات dashboard analytics data"><div class="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-r from-cyan-500 to-teal-500 opacity-0 blur-lg transition duration-500 group-hover:opacity-30"></div><div class="flex items-start justify-between gap-4"><div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-500 text-2xl text-white shadow-lg shadow-cyan-500/25">▦</div><span class="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-bold text-cyan-600 dark:text-cyan-300">تحليل بيانات</span></div><h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">محلل البيانات</h3><p class="mt-3 flex-1 leading-7 text-slate-600 dark:text-slate-400">اكتشف الأنماط وحوّل بياناتك المعقدة إلى رؤى وقرارات واضحة.</p><div class="mt-6 flex items-center justify-between"><span dir="ltr" class="text-sm font-bold text-amber-500">★★★★☆ <span class="text-slate-500 dark:text-slate-400">4.7</span></span><a href="#" class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-bold text-white transition hover:scale-105 hover:bg-indigo-700">جرّب الآن</a></div></article>
+                </div>
+                <p id="empty-tools" class="mt-10 hidden rounded-2xl border border-dashed border-slate-300 p-8 text-center text-slate-500 dark:border-slate-700 dark:text-slate-400">لم نعثر على أدوات تطابق بحثك. جرّب كلمة أخرى أو اختر فئة مختلفة.</p>
+            </div>
         </section>
+        <script>
+            (() => {
+                const searchInput = document.getElementById('tool-search');
+                const grid = document.getElementById('tools-grid');
+                const emptyState = document.getElementById('empty-tools');
+                if (!searchInput || !grid) return;
+                const cards = [...grid.querySelectorAll('.tool-card')];
+                let activeCategory = 'all';
+                const applyFilters = () => {
+                    const query = searchInput.value.trim().toLocaleLowerCase('ar');
+                    let visibleCount = 0;
+                    cards.forEach((card) => {
+                        const visible = (activeCategory === 'all' || card.dataset.category === activeCategory) && (!query || card.dataset.search.toLocaleLowerCase('ar').includes(query));
+                        card.classList.toggle('hidden', !visible);
+                        if (visible) visibleCount += 1;
+                    });
+                    emptyState.classList.toggle('hidden', visibleCount !== 0);
+                };
+                searchInput.addEventListener('input', applyFilters);
+                document.addEventListener('categorychange', (event) => {
+                    activeCategory = event.detail.category;
+                    applyFilters();
+                    document.getElementById('tools')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+                applyFilters();
+            })();
+        </script>
 
     <!-- 2. FOOTER SECTION -->
     <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8 transition-colors duration-300">
