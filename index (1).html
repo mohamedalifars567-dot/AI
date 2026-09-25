@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark scroll-smooth" scroll-pt-24>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus AI — منصة الأدوات والخدمات الذكية</title>
+    
+    <!-- خط Tajawal من Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CDN مكتبة Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- إعدادات Tailwind CSS والـ Dark Mode -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-14px)' },
+                        },
+                    },
+                    animation: {
+                        float: 'float 6s ease-in-out infinite',
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-300 min-h-screen flex flex-col justify-between">
+
+    <!-- 1. NAVBAR SECTION -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Brand Name -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-500/30">
+                        N
+                    </div>
+                    <span class="text-2xl font-extrabold bg-gradient-to-r from-brand-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                        Nexus AI
+                    </span>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 font-medium">
+                    <a href="#hero" class="hover:text-brand-500 transition-colors">الرئيسية</a>
+                    <a href="#tool-search" class="hover:text-brand-500 transition-colors">البحث والفلاتر</a>
+                    <a href="#category-filters" class="hover:text-brand-500 transition-colors">معرض الأدوات</a>
+                    <a href="#pricing" class="hover:text-brand-500 transition-colors">الأسعار</a>
+                    <a href="#testimonials" class="hover:text-brand-500 transition-colors">آراء العملاء</a>
+                </nav>
+
+                <!-- Actions (Dark Mode Toggle & CTA) -->
+                <div class="hidden md:flex items-center gap-4">
+                    <!-- Dark/Light Mode Toggle Button -->
+                    <button id="theme-toggle" type="button" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:ring-2 hover:ring-brand-500 transition-all duration-300">
+                        <!-- Sun Icon (Light Mode) -->
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z"></path>
+                        </svg>
+                        <!-- Moon Icon (Dark Mode) -->
+                        <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </button>
+
+                    <a href="#category-filters" class="px-5 py-2.5 rounded-xl font-semibold bg-brand-600 hover:bg-brand-700 text-white shadow-lg shadow-brand-500/25 hover:scale-105 active:scale-95 transition-all">
+                        ابدأ الآن
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <button id="theme-toggle-mobile" type="button" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                        🌙
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-brand-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-6 space-y-3 font-medium">
+            <a href="#hero" class="block py-2 hover:text-brand-500">الرئيسية</a>
+            <a href="#tool-search" class="block py-2 hover:text-brand-500">البحث والفلاتر</a>
+            <a href="#category-filters" class="block py-2 hover:text-brand-500">معرض الأدوات</a>
+            <a href="#pricing" class="block py-2 hover:text-brand-500">الأسعار</a>
+            <a href="#testimonials" class="block py-2 hover:text-brand-500">آراء العملاء</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+        <!-- Hero section assembled from the team contributions -->
+        <section class="py-12 text-center text-slate-400 border-b border-dashed border-slate-300 dark:border-slate-800">
+            <!-- ===== HERO · Task 1: Gradient heading, subtitle & CTAs ===== -->
+            <!-- Requires <html lang="ar" dir="rtl"> and Tailwind with darkMode: 'class' -->
+            <section id="hero" aria-labelledby="hero-heading" class="relative isolate overflow-hidden">
+                <!--pt-* clears a fixed navbar; reduce it if your navbar is in normal flow.
+                overflow-hidden + isolate keep the blurred glows added in Task 2 from causing horizontal scroll.-->
+                <div class="mx-auto max-w-7xl px-6 pb-16 pt-32 sm:pb-24 sm:pt-40 lg:px-8">
+
+                    <!-- Text block (Task 2's mockup will sit below it, inside this same container) -->
+                    <div class="mx-auto max-w-4xl text-center">
+
+                        <!-- Title: the inline span + box-decoration-clone repaints the full gradient on every wrapped line -->
+                        <h1 id="hero-heading" class="text-balance text-4xl font-extrabold leading-snug sm:text-5xl md:text-6xl lg:text-7xl">
+                            <span class="box-decoration-clone bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text py-1 text-transparent">اكتشف أقوى أدوات الذكاء الاصطناعي</span>
+                        </h1>
+
+                        <!-- Subtitle: max-w-xl keeps lines under ~75 characters -->
+                        <p class="mx-auto mt-6 max-w-xl text-pretty text-lg leading-8 text-slate-600 dark:text-slate-400 sm:mt-8 sm:text-xl sm:leading-9">
+                             دليلك الشامل لأفضل أدوات الذكاء الاصطناعي في التصميم والبرمجة وكتابة المحتوى وتحليل البيانات. قارن، جرّب، واختر الأداة المناسبة لعملك في دقائق.
+                        </p>
+
+                        <!-- CTAs: stacked full-width on mobile, side by side from sm -->
+                        <div class="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row">
+
+                         <!-- Primary CTA -->
+                            <a
+                                href="#category-filters"
+                                class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-8 py-3.5
+                                text-base font-bold text-white shadow-lg shadow-indigo-500/30
+                                transition-all duration-300
+                                hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/40 active:scale-95
+                                motion-reduce:transition-none motion-reduce:hover:scale-100
+                                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500"
+                            >
+                             استكشف الأدوات
+                            </a>
+
+                            <!-- Secondary CTA (glass) -->
+                            <a
+                                href="#dashboard"
+                                class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/60 px-8 py-3.5
+                                text-base font-semibold text-slate-800 shadow-sm backdrop-blur-md
+                                transition-all duration-300
+                                hover:border-slate-400 hover:bg-white/90
+                                dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-200
+                                dark:hover:border-slate-600 dark:hover:bg-slate-800/70
+                                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500"
+                            >
+                                <svg class="h-5 w-5 text-indigo-600 dark:text-indigo-400" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                             شاهد العرض
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>        
+        </section>
+            <section id="dashboard" class="relative isolate overflow-hidden">
+                <div class="mx-auto max-w-7xl …">
+
+                    <!-- ===== HERO · Task 2: Floating glass dashboard mockup + ambient glow ===== -->
+                    <!-- Requires the `float` animation in your Tailwind config (see commit notes). -->
+                    <!-- Decorative sample UI: aria-hidden keeps screen readers out of the fake data. -->
+                    <div
+                        aria-hidden="true"
+                        class="group relative mx-auto mb-10 mt-16 max-w-5xl animate-float sm:mb-16 sm:mt-20 motion-reduce:animate-none"
+                    >
+                        <!-- Ambient back-glow: lives inside the floating wrapper, so it moves with the card -->
+                        <div
+                            class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+                            opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-40"
+                        ></div>
+
+                        <!-- Glass card -->
+                        <div
+                            class="relative overflow-hidden rounded-3xl border border-white/20 bg-white/60 shadow-2xl shadow-indigo-500/10
+                            backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/60"
+                        >
+                            <!-- Window bar (dir="ltr" keeps the dots on the left and the URL readable) -->
+                            <div dir="ltr" class="flex items-center gap-2 border-b border-slate-900/5 px-5 py-3.5 dark:border-white/5">
+                                <span class="h-3 w-3 rounded-full bg-rose-400"></span>
+                                <span class="h-3 w-3 rounded-full bg-amber-400"></span>
+                                <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
+                                <span class="mx-auto rounded-md bg-slate-900/5 px-6 py-1 text-xs text-slate-500 dark:bg-white/5 dark:text-slate-400">nexus.ai/dashboard</span>
+                            </div>
+
+                            <!-- Body: chart + top tools (sample content, stacks on mobile) -->
+                            <div class="grid gap-8 p-5 sm:p-8 md:grid-cols-5">
+
+                                <!-- Weekly usage chart (pure CSS bars) -->
+                                <div class="md:col-span-3">
+                                    <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">استخدام هذا الأسبوع</p>
+                                    <div class="mt-5 flex h-48 items-end gap-2 sm:gap-3">
+                                        <span class="h-[35%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                        <span class="h-[55%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                        <span class="h-[45%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                        <span class="h-[75%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                        <span class="h-[60%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                        <span class="h-full flex-1 rounded-t-lg bg-gradient-to-t from-purple-500 to-pink-400"></span>
+                                        <span class="h-[70%] flex-1 rounded-t-lg bg-gradient-to-t from-indigo-500/60 to-purple-400/60"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Top-rated tools -->
+                                <div class="md:col-span-2">
+                                    <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">الأدوات الأعلى تقييمًا</p>
+                                    <ul class="mt-5 space-y-3">
+                                        <li class="flex items-center gap-3 rounded-xl bg-white/50 p-3 transition-colors hover:bg-white/80 dark:bg-slate-800/50 dark:hover:bg-slate-800/80">
+                                            <span class="h-10 w-10 shrink-0 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500"></span>
+                                            <div class="min-w-0 flex-1">
+                                            <p class="truncate text-sm font-semibold text-slate-900 dark:text-white">مساعد الكتابة الذكي</p>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400">كتابة محتوى</p>
+                                            </div>
+                                            <span dir="ltr" class="rounded-full bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-300">★ 4.9</span>
+                                        </li>
+                                        <li class="flex items-center gap-3 rounded-xl bg-white/50 p-3 transition-colors hover:bg-white/80 dark:bg-slate-800/50 dark:hover:bg-slate-800/80">
+                                            <span class="h-10 w-10 shrink-0 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500"></span>
+                                            <div class="min-w-0 flex-1">
+                                                <p class="truncate text-sm font-semibold text-slate-900 dark:text-white">مولّد الصور</p>
+                                                <p class="text-xs text-slate-500 dark:text-slate-400">تصميم</p>
+                                            </div>
+                                            <span dir="ltr" class="rounded-full bg-pink-500/10 px-2 py-0.5 text-xs font-semibold text-pink-600 dark:text-pink-300">★ 4.8</span>
+                                        </li>
+                                        <li class="flex items-center gap-3 rounded-xl bg-white/50 p-3 transition-colors hover:bg-white/80 dark:bg-slate-800/50 dark:hover:bg-slate-800/80">
+                                            <span class="h-10 w-10 shrink-0 rounded-lg bg-gradient-to-br from-sky-500 to-indigo-500"></span>
+                                            <div class="min-w-0 flex-1">
+                                                <p class="truncate text-sm font-semibold text-slate-900 dark:text-white">مساعد البرمجة</p>
+                                                <p class="text-xs text-slate-500 dark:text-slate-400">برمجة</p>
+                                            </div>
+                                            <span dir="ltr" class="rounded-full bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-300">★ 4.8</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+            </section>
+
+                <!-- ===== SEARCH · Task 3: Central search bar ===== -->
+                <!-- Sits right after the hero section. -mt-* pulls it up into the hero's bottom padding. -->
+                <section id="search-section" class="relative z-10 -mt-8 px-6 pb-8 sm:-mt-12 lg:px-8 scroll-mt-32">
+                    <div role="search" class="group relative mx-auto max-w-3xl" >
+                        <label for="tool-search" class="sr-only">ابحث في أدوات الذكاء الاصطناعي</label>
+                        <!-- Magnifier icon (start side): turns indigo while the input is focused -->
+                        <div
+                            class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5 text-slate-500
+                            transition-colors group-focus-within:text-indigo-500
+                            dark:text-slate-400 dark:group-focus-within:text-indigo-400"
+                        >
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="11" cy="11" r="7" />
+                                <path d="m20 20-3.5-3.5" />
+                            </svg>
+                        </div>
+
+                        <input
+                            id="tool-search"
+                            type="search"
+                            name="q"
+                            autocomplete="off"
+                            enterkeyhint="search"
+                            aria-keyshortcuts="Control+K Meta+K"
+                            placeholder="ابحث عن أداة ذكاء اصطناعي..."
+                            class="peer w-full rounded-2xl border border-slate-300 bg-white/70 py-4 ps-14 pe-4 text-base text-slate-900
+                            shadow-lg shadow-slate-900/5 backdrop-blur-xl transition-all duration-300
+                            placeholder:text-slate-500 hover:border-slate-400
+                            focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:shadow-indigo-500/20
+                            sm:pe-28
+                            dark:border-slate-700 dark:bg-slate-900/60 dark:text-white dark:placeholder:text-slate-400
+                            dark:hover:border-slate-600 dark:focus:border-transparent scroll-mt-40"
+                        />
+
+                        <!-- Shortcut badge (end side): hidden on small screens, fades out while the input is focused -->
+                        <kbd
+                            id="search-shortcut"
+                            dir="rtl"
+                            aria-hidden="true"
+                          class="pointer-events-none absolute inset-y-0 end-4 my-auto hidden h-7 items-center rounded-md border border-slate-300
+                            bg-slate-100/80 px-2 font-sans text-xs font-medium text-slate-600 transition-opacity
+                            peer-focus:opacity-0 sm:flex
+                            dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-400"
+                        >Ctrl + K</kbd>
+                    </div>
+
+                    <!-- Ctrl/Cmd + K focuses the input. Uses e.code so it also works on the Arabic keyboard layout. -->
+                    <script>
+                        (() => {
+                            const input = document.getElementById('tool-search');
+                            const badge = document.getElementById('search-shortcut');
+                            if (!input) return;
+                            const isApple = /Mac|iPhone|iPad/i.test(navigator.userAgentData?.platform || navigator.platform);
+                            if (isApple && badge) badge.textContent = '⌘ K';
+                            document.addEventListener('keydown', (e) => {
+                                if ((e.ctrlKey || e.metaKey) && e.code === 'KeyK') {
+                                    e.preventDefault();
+                                    input.focus();
+                                    input.select();
+                                }
+                            });
+                        })();
+                    </script>
+                </section>                
+        <section id="filters-section" class="py-8 text-center border-b border-slate-200/70 dark:border-slate-800">
+            <!-- ===== FILTERS · Developer 3: Category chips ===== -->
+            <!-- Goes inside <section id="search">, right after the role="search" div (before the Task 3 <script>). -->
+            <div class="mx-auto mt-3 max-w-3xl">
+
+                <!--Mobile: one swipeable row that bleeds to the screen edges (-mx-6 cancels the section's px-6).
+                sm+: wraps and centers. No justify-center on mobile: it makes overflowing chips unreachable.
+                Active state is driven by aria-pressed, so the script only flips one attribute. -->
+                <div
+                    id="category-filters"
+                    role="group"
+                    aria-label="تصفية الأدوات حسب الفئة"
+                    class="-mx-6 flex gap-2 overflow-x-auto px-6 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
+                    sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0"
+                >
+                    <button
+                        type="button" data-category="all" aria-pressed="true"
+                        class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold backdrop-blur-md
+                        transition-all duration-200 hover:-translate-y-0.5 active:scale-95
+                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+                        border-slate-300 bg-white/60 text-slate-700 hover:border-indigo-400 hover:bg-white
+                        dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800
+                        aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:bg-origin-border aria-pressed:from-indigo-600 aria-pressed:to-purple-600
+                        aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-indigo-500/30 aria-pressed:hover:border-transparent
+                        dark:aria-pressed:border-transparent dark:aria-pressed:text-white"
+                    >الكل</button>
+
+                    <button
+                        type="button" data-category="design" aria-pressed="false"
+                        class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold backdrop-blur-md
+                       transition-all duration-200 hover:-translate-y-0.5 active:scale-95
+                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+                       border-slate-300 bg-white/60 text-slate-700 hover:border-indigo-400 hover:bg-white
+                       dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800
+                       aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:bg-origin-border aria-pressed:from-indigo-600 aria-pressed:to-purple-600
+                       aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-indigo-500/30 aria-pressed:hover:border-transparent
+                       dark:aria-pressed:border-transparent dark:aria-pressed:text-white"
+                    >تصميم</button>
+
+                    <button
+                        type="button" data-category="code" aria-pressed="false"
+                        class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold backdrop-blur-md
+                        transition-all duration-200 hover:-translate-y-0.5 active:scale-95
+                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+                        border-slate-300 bg-white/60 text-slate-700 hover:border-indigo-400 hover:bg-white
+                        dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800
+                        aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:bg-origin-border aria-pressed:from-indigo-600 aria-pressed:to-purple-600
+                        aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-indigo-500/30 aria-pressed:hover:border-transparent
+                        dark:aria-pressed:border-transparent dark:aria-pressed:text-white"
+                    >برمجة</button>
+
+                    <button
+                        type="button" data-category="writing" aria-pressed="false"
+                        class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold backdrop-blur-md
+                        transition-all duration-200 hover:-translate-y-0.5 active:scale-95
+                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+                        border-slate-300 bg-white/60 text-slate-700 hover:border-indigo-400 hover:bg-white
+                        dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800
+                        aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:bg-origin-border aria-pressed:from-indigo-600 aria-pressed:to-purple-600
+                        aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-indigo-500/30 aria-pressed:hover:border-transparent
+                        dark:aria-pressed:border-transparent dark:aria-pressed:text-white"
+                    >كتابة محتوى</button>
+
+                    <button
+                        type="button" data-category="data" aria-pressed="false"
+                        class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-semibold backdrop-blur-md
+                        transition-all duration-200 hover:-translate-y-0.5 active:scale-95
+                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+                        border-slate-300 bg-white/60 text-slate-700 hover:border-indigo-400 hover:bg-white
+                        dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:bg-slate-800
+                        aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:bg-origin-border aria-pressed:from-indigo-600 aria-pressed:to-purple-600
+                        aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-indigo-500/30 aria-pressed:hover:border-transparent
+                        dark:aria-pressed:border-transparent dark:aria-pressed:text-white"
+                    >تحليل بيانات</button>
+                </div>
+
+              <!-- Single-select toggle. Emits `categorychange` so the tools grid can filter without touching this code. -->
+                <script>
+                    (() => {
+                        const group = document.getElementById('category-filters');
+                        if (!group) return;
+
+                     group.addEventListener('click', (e) => {
+                         const chip = e.target.closest('button[data-category]');
+                         if (!chip) return;
+
+                         group.querySelectorAll('button[data-category]').forEach((b) =>
+                               b.setAttribute('aria-pressed', String(b === chip))
+                            );
+                         chip.scrollIntoView({ inline: 'center', block: 'nearest' });
+
+                            group.dispatchEvent(
+                               new CustomEvent('categorychange', { detail: { category: chip.dataset.category }, bubbles: true })
+                           );
+                       });
+                   })();
+                </script>
+            </div>
+        </section>
+    </main>
+     <!-- ===== TOOLS GRID · Developer 3 ===== -->
+        <section id="tools" class="relative overflow-hidden py-20 sm:py-24">
+            <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-indigo-500/5 to-transparent dark:from-indigo-400/10"></div>
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center">
+                    <span class="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-sm font-bold text-indigo-700 dark:border-indigo-400/20 dark:bg-indigo-400/10 dark:text-indigo-300">اكتشف الإمكانات</span>
+                    <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">أدوات ذكية لكل فكرة</h2>
+                    <p class="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-400">مجموعة منتقاة من الأدوات التي تساعدك على إنجاز أعمالك بذكاء وسرعة.</p>
+                </div>
+                <div id="tools-grid" class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" aria-live="polite">
+                    <article class="tool-card group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-indigo-300 hover:shadow-2xl hover:shadow-indigo-500/10 dark:border-slate-700 dark:bg-slate-800/70 dark:hover:border-indigo-500" data-category="writing" data-search="مساعد الكتابة الذكي كتابة محتوى نصوص copywriter"><div class="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-r from-indigo-500 to-pink-500 opacity-0 blur-lg transition duration-500 group-hover:opacity-30"></div><div class="flex items-start justify-between gap-4"><div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-2xl text-white shadow-lg shadow-indigo-500/25">✦</div><span class="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-bold text-indigo-600 dark:text-indigo-300">كتابة محتوى</span></div><h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">مساعد الكتابة الذكي</h3><p class="mt-3 flex-1 leading-7 text-slate-600 dark:text-slate-400">أنشئ نصوصًا احترافية وأفكارًا إبداعية تحافظ على نبرة علامتك التجارية.</p><div class="mt-6 flex items-center justify-between"><span dir="ltr" class="text-sm font-bold text-amber-500">★★★★★ <span class="text-slate-500 dark:text-slate-400">4.9</span></span><a href="#" class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-bold text-white transition hover:scale-105 hover:bg-indigo-700">جرّب الآن</a></div></article>
+                    <article class="tool-card group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-indigo-300 hover:shadow-2xl hover:shadow-indigo-500/10 dark:border-slate-700 dark:bg-slate-800/70 dark:hover:border-indigo-500" data-category="design" data-search="مولد الصور تصميم صور art image generator"><div class="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 blur-lg transition duration-500 group-hover:opacity-30"></div><div class="flex items-start justify-between gap-4"><div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 text-2xl text-white shadow-lg shadow-pink-500/25">◈</div><span class="rounded-full bg-pink-500/10 px-3 py-1 text-xs font-bold text-pink-600 dark:text-pink-300">تصميم</span></div><h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">مولّد الصور الإبداعي</h3><p class="mt-3 flex-1 leading-7 text-slate-600 dark:text-slate-400">حوّل وصفك إلى صور مذهلة تناسب الحملات التسويقية والمشاريع الرقمية.</p><div class="mt-6 flex items-center justify-between"><span dir="ltr" class="text-sm font-bold text-amber-500">★★★★★ <span class="text-slate-500 dark:text-slate-400">4.8</span></span><a href="#" class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-bold text-white transition hover:scale-105 hover:bg-indigo-700">جرّب الآن</a></div></article>
+                    <article class="tool-card group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-indigo-300 hover:shadow-2xl hover:shadow-indigo-500/10 dark:border-slate-700 dark:bg-slate-800/70 dark:hover:border-indigo-500" data-category="code" data-search="مساعد البرمجة برمجة كود developer coding code assistant"><div class="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 opacity-0 blur-lg transition duration-500 group-hover:opacity-30"></div><div class="flex items-start justify-between gap-4"><div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 text-2xl text-white shadow-lg shadow-sky-500/25">&lt;/&gt;</div><span class="rounded-full bg-sky-500/10 px-3 py-1 text-xs font-bold text-sky-600 dark:text-sky-300">برمجة</span></div><h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">مساعد البرمجة</h3><p class="mt-3 flex-1 leading-7 text-slate-600 dark:text-slate-400">اكتب كودًا أفضل، اكتشف الأخطاء، وتعلّم تقنيات جديدة بمساعدة ذكية.</p><div class="mt-6 flex items-center justify-between"><span dir="ltr" class="text-sm font-bold text-amber-500">★★★★★ <span class="text-slate-500 dark:text-slate-400">4.8</span></span><a href="#" class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-bold text-white transition hover:scale-105 hover:bg-indigo-700">جرّب الآن</a></div></article>
+                    <article class="tool-card group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-indigo-300 hover:shadow-2xl hover:shadow-indigo-500/10 dark:border-slate-700 dark:bg-slate-800/70 dark:hover:border-indigo-500" data-category="data" data-search="محلل البيانات تحليل بيانات dashboard analytics data"><div class="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-r from-cyan-500 to-teal-500 opacity-0 blur-lg transition duration-500 group-hover:opacity-30"></div><div class="flex items-start justify-between gap-4"><div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-500 text-2xl text-white shadow-lg shadow-cyan-500/25">▦</div><span class="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-bold text-cyan-600 dark:text-cyan-300">تحليل بيانات</span></div><h3 class="mt-6 text-xl font-bold text-slate-900 dark:text-white">محلل البيانات</h3><p class="mt-3 flex-1 leading-7 text-slate-600 dark:text-slate-400">اكتشف الأنماط وحوّل بياناتك المعقدة إلى رؤى وقرارات واضحة.</p><div class="mt-6 flex items-center justify-between"><span dir="ltr" class="text-sm font-bold text-amber-500">★★★★☆ <span class="text-slate-500 dark:text-slate-400">4.7</span></span><a href="#" class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-bold text-white transition hover:scale-105 hover:bg-indigo-700">جرّب الآن</a></div></article>
+                </div>
+                <p id="empty-tools" class="mt-10 hidden rounded-2xl border border-dashed border-slate-300 p-8 text-center text-slate-500 dark:border-slate-700 dark:text-slate-400">لم نعثر على أدوات تطابق بحثك. جرّب كلمة أخرى أو اختر فئة مختلفة.</p>
+            </div>
+        </section>
+        <script>
+            (() => {
+                const searchInput = document.getElementById('tool-search');
+                const grid = document.getElementById('tools-grid');
+                const emptyState = document.getElementById('empty-tools');
+                if (!searchInput || !grid) return;
+                const cards = [...grid.querySelectorAll('.tool-card')];
+                let activeCategory = 'all';
+                const applyFilters = () => {
+                    const query = searchInput.value.trim().toLocaleLowerCase('ar');
+                    let visibleCount = 0;
+                    cards.forEach((card) => {
+                        const visible = (activeCategory === 'all' || card.dataset.category === activeCategory) && (!query || card.dataset.search.toLocaleLowerCase('ar').includes(query));
+                        card.classList.toggle('hidden', !visible);
+                        if (visible) visibleCount += 1;
+                    });
+                    emptyState.classList.toggle('hidden', visibleCount !== 0);
+                };
+                searchInput.addEventListener('input', applyFilters);
+                document.addEventListener('categorychange', (event) => {
+                    activeCategory = event.detail.category;
+                    applyFilters();
+                    document.getElementById('tools')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+                applyFilters();
+            })();
+        </script>
+
+
+        <!-- ===== PRICING ===== -->
+        <section id="pricing" class="relative overflow-hidden bg-slate-100/70 py-20 dark:bg-slate-950/40 sm:py-24">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center">
+                    <span class="inline-flex rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-sm font-bold text-indigo-700 dark:border-indigo-400/20 dark:bg-indigo-400/10 dark:text-indigo-300">خطط مرنة</span>
+                    <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">اختر الخطة المناسبة لك</h2>
+                    <p class="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-400">ابدأ مجانًا، ثم طوّر تجربتك عندما تحتاج إلى إمكانات أكبر.</p>
+                </div>
+                <div class="mx-auto mt-12 grid max-w-5xl gap-6 lg:grid-cols-3">
+                    <article class="rounded-2xl border border-slate-200 bg-white/70 p-7 backdrop-blur-lg dark:border-slate-700 dark:bg-slate-800/70"><h3 class="text-xl font-bold text-slate-900 dark:text-white">مجاني</h3><p class="mt-3 text-sm text-slate-500 dark:text-slate-400">للاستكشاف والتجربة</p><p class="mt-6 text-4xl font-extrabold text-slate-900 dark:text-white">$0 <span class="text-sm font-normal text-slate-500">/ شهريًا</span></p><a href="#tools" class="mt-8 block rounded-xl border border-indigo-200 px-4 py-3 text-center font-bold text-indigo-600 transition hover:bg-indigo-50 dark:border-indigo-400/30 dark:text-indigo-300 dark:hover:bg-indigo-400/10">ابدأ مجانًا</a></article>
+                    <article class="relative rounded-2xl border-2 border-indigo-500 bg-white p-7 shadow-xl shadow-indigo-500/15 dark:bg-slate-800"><span class="absolute -top-3 right-6 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-3 py-1 text-xs font-bold text-white">الأكثر شعبية</span><h3 class="text-xl font-bold text-slate-900 dark:text-white">محترف</h3><p class="mt-3 text-sm text-slate-500 dark:text-slate-400">للمبدعين والفرق الصغيرة</p><p class="mt-6 text-4xl font-extrabold text-slate-900 dark:text-white">$19 <span class="text-sm font-normal text-slate-500">/ شهريًا</span></p><a href="#tools" class="mt-8 block rounded-xl bg-indigo-600 px-4 py-3 text-center font-bold text-white transition hover:bg-indigo-700">ابدأ الآن</a></article>
+                    <article class="rounded-2xl border border-slate-200 bg-white/70 p-7 backdrop-blur-lg dark:border-slate-700 dark:bg-slate-800/70"><h3 class="text-xl font-bold text-slate-900 dark:text-white">شركات</h3><p class="mt-3 text-sm text-slate-500 dark:text-slate-400">للعمليات واسعة النطاق</p><p class="mt-6 text-4xl font-extrabold text-slate-900 dark:text-white">$49 <span class="text-sm font-normal text-slate-500">/ شهريًا</span></p><a href="#tools" class="mt-8 block rounded-xl border border-indigo-200 px-4 py-3 text-center font-bold text-indigo-600 transition hover:bg-indigo-50 dark:border-indigo-400/30 dark:text-indigo-300 dark:hover:bg-indigo-400/10">تواصل معنا</a></article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIALS ===== -->
+        <section id="testimonials" class="py-20 sm:py-24">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center"><h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">ماذا يقول المستخدمون؟</h2><p class="mt-4 text-lg text-slate-600 dark:text-slate-400">تجارب حقيقية من أشخاص يستخدمون أدوات الذكاء بذكاء.</p></div>
+                <div class="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
+                    <figure class="rounded-2xl border border-slate-200 bg-white/70 p-6 backdrop-blur-lg dark:border-slate-700 dark:bg-slate-800/70"><div class="text-amber-500">★★★★★</div><blockquote class="mt-4 leading-8 text-slate-600 dark:text-slate-300">“وفّرت عليّ Nexus AI ساعات من البحث والمقارنة.”</blockquote><figcaption class="mt-5 font-bold text-slate-900 dark:text-white">سارة — مصممة منتجات</figcaption></figure>
+                    <figure class="rounded-2xl border border-slate-200 bg-white/70 p-6 backdrop-blur-lg dark:border-slate-700 dark:bg-slate-800/70"><div class="text-amber-500">★★★★★</div><blockquote class="mt-4 leading-8 text-slate-600 dark:text-slate-300">“واجهة واضحة وبطاقات مفيدة، وصلت للأداة المناسبة بسرعة.”</blockquote><figcaption class="mt-5 font-bold text-slate-900 dark:text-white">عمر — مطور برمجيات</figcaption></figure>
+                    <figure class="rounded-2xl border border-slate-200 bg-white/70 p-6 backdrop-blur-lg dark:border-slate-700 dark:bg-slate-800/70"><div class="text-amber-500">★★★★☆</div><blockquote class="mt-4 leading-8 text-slate-600 dark:text-slate-300">“التصفية حسب المجال جعلت اكتشاف الأدوات أسهل بكثير.”</blockquote><figcaption class="mt-5 font-bold text-slate-900 dark:text-white">ليان — محللة بيانات</figcaption></figure>
+                </div>
+            </div>
+        </section>
+
+    <!-- 2. FOOTER SECTION -->
+    <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white font-bold">
+                            N
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-brand-600 to-pink-500 bg-clip-text text-transparent">
+                            Nexus AI
+                        </span>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        دليلك الموثوق والذكية لاكتشاف أفضل أدوات الذكاء الاصطناعي وتقنيات المستقبل لزيادة إنتاجيتك وتطوير مشاريعك.
+                    </p>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-base font-bold text-slate-900 dark:text-white mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="#hero" class="hover:text-brand-500 transition-colors">الرئيسية</a></li>
+                        <li><a href="#category-filters" class="hover:text-brand-500 transition-colors">أحدث الأدوات</a></li>
+                        <li><a href="#pricing" class="hover:text-brand-500 transition-colors">خطط الاشتراك</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Legal / Tech -->
+                <div>
+                    <h4 class="text-base font-bold text-slate-900 dark:text-white mb-4">التقنيات المستخدمة</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-500 dark:text-slate-400">
+                        <li>Tailwind CSS v3</li>
+                        <li>HTML5 & ES6 JavaScript</li>
+                        <li>Git & GitHub Collaboration</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Social / Contact -->
+                <div>
+                    <h4 class="text-base font-bold text-slate-900 dark:text-white mb-4">تابعنا</h4>
+                    <div class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+                        <a href="#" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:text-brand-500 hover:scale-110 transition-all">GitHub</a>
+                        <a href="#" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:text-brand-500 hover:scale-110 transition-all">Twitter</a>
+                        <a href="#" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:text-brand-500 hover:scale-110 transition-all">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Bar -->
+            <div class="pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400">
+                جميع الحقوق محفوظة © 2026 — تم التطوير بواسطة فريق <span class="font-semibold text-brand-500">Nexus AI</span>.
+            </div>
+        </div>
+    </footer>
+
+    <!-- 3. JAVASCRIPT FOR DARK MODE & MOBILE MENU TOGGLE -->
+    <script>
+        const themeToggleButtons = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')].filter(Boolean);
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const setTheme = (theme) => {
+            const isDark = theme === 'dark';
+            document.documentElement.classList.toggle('dark', isDark);
+            localStorage.setItem('color-theme', theme);
+            themeToggleDarkIcon?.classList.toggle('hidden', isDark);
+            themeToggleLightIcon?.classList.toggle('hidden', !isDark);
+            themeToggleButtons.forEach((button) => button.setAttribute('aria-pressed', String(isDark)));
+        };
+        const initialTheme = localStorage.getItem('color-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        setTheme(initialTheme);
+        themeToggleButtons.forEach((button) => button.addEventListener('click', () => setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark')));
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn?.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
+        mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    </script>
+</body>
+</html>
