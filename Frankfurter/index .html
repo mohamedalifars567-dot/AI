@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الصرف الاحترافية - Frankfurter API</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans selection:bg-emerald-500 selection:text-slate-950">
+
+    <!-- Header -->
+    <header class="bg-slate-900 border-b border-slate-800 shadow-lg sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-bold">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">منصة أسعار الصرف</h1>
+                   
+            </div>
+           
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-8">
+
+        <!-- Error Banner -->
+        <div id="globalError" class="hidden bg-red-950/80 border border-red-800 text-red-200 p-4 rounded-xl text-sm flex items-center gap-3">
+            <i class="fa-solid fa-triangle-exclamation text-lg text-red-400"></i>
+            <span id="errorText">حدث خطأ أثناء الاتصال بالخادم.</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Column: Currency Converter (5 Cols) -->
+            <section class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+                <div>
+                    <h2 class="text-lg font-semibold mb-5 flex items-center gap-2 text-emerald-400">
+                        <i class="fa-solid fa-calculator"></i> محول العملات الفوري
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Amount -->
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1.5 font-medium">المبلغ</label>
+                            <input type="number" id="amountInput" value="1" min="0" step="any"
+                                class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-lg font-mono focus:outline-none focus:border-emerald-500 transition">
+                        </div>
+
+                        <!-- From Currency -->
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1.5 font-medium">من عملة الأساس</label>
+                            <select id="fromCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-emerald-500 transition">
+                            </select>
+                        </div>
+
+                        <!-- Swap Button -->
+                        <div class="flex justify-center my-1">
+                            <button id="swapBtn" title="تبديل العملات" class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 text-slate-300 hover:text-emerald-400 hover:border-emerald-500 transition flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-right-arrow-left rotate-90 sm:rotate-0"></i>
+                            </button>
+                        </div>
+
+                        <!-- To Currency -->
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1.5 font-medium">إلى عملة الهدف</label>
+                            <select id="toCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-emerald-500 transition">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Box -->
+                <div class="mt-8 bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+                    <span class="text-slate-400 text-xs">نتيجة التحويل الحية</span>
+                    <div id="conversionResult" class="text-3xl font-bold font-mono text-emerald-400 mt-1">--</div>
+                    <div id="exchangeRateInfo" class="text-xs text-slate-500 mt-2 font-mono">--</div>
+                </div>
+            </section>
+
+            <!-- Right Column: Exchange Rates Table & Rates Checker (7 Cols) -->
+            <section class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-lg font-semibold flex items-center gap-2 text-emerald-400">
+                            <i class="fa-solid fa-table-list"></i> جدول أسعار الصرف الحية
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">اختر عملة أساس لعرض مقارنتها مع باقي العملات</p>
+                    </div>
+                    <!-- Base Currency Selector for Table -->
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <span class="text-xs text-slate-400 whitespace-nowrap">الأساس:</span>
+                        <select id="tableBaseCurrency" class="bg-slate-950 border border-slate-800 rounded-lg py-1.5 px-3 text-xs focus:outline-none focus:border-emerald-500 transition font-mono">
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Search inside table -->
+                <div class="relative mb-4">
+                    <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-500 text-xs">
+                        <i class="fa-solid fa-search"></i>
+                    </span>
+                    <input type="text" id="tableSearchInput" placeholder="تصفية العملات في الجدول..." 
+                        class="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 pr-9 pl-4 text-xs focus:outline-none focus:border-emerald-500 transition">
+                </div>
+
+                <!-- Rates Table Container -->
+                <div class="relative flex-1 min-h-[300px] max-h-[400px] overflow-y-auto border border-slate-800 rounded-xl bg-slate-950">
+                    <div id="tableLoading" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/80 z-10">
+                        <i class="fa-solid fa-circle-notch fa-spin text-2xl text-emerald-400 mb-2"></i>
+                        <span class="text-xs text-slate-400">جاري جلب أسعار الصرف...</span>
+                    </div>
+                    <table class="w-full text-right border-collapse">
+                        <thead class="bg-slate-900 text-slate-400 text-xs sticky top-0 border-b border-slate-800">
+                            <tr>
+                                <th class="p-3 font-medium">العملة (رمز)</th>
+                                <th class="p-3 font-medium">اسم العملة</th>
+                                <th class="p-3 font-medium text-left">سعر الصرف</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ratesTableBody" class="divide-y divide-slate-900 text-sm font-mono">
+                            <!-- Dynamic rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-slate-500 text-xs border-t border-slate-900 mt-12">
+        تم تطوير هذا العرض الاحترافي باستخدام <a href="https://frankfurter.dev/" target="_blank" class="text-emerald-400 hover:underline font-medium">Frankfurter API</a> لمشاركتها مع زملاء المهنة.
+    </footer>
+
+    <!-- تُحمّل طبقة API أولًا، ثم منطق الواجهة بعد تجهيز عناصر الصفحة -->
+    <script src="api.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
